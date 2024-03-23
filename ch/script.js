@@ -12,7 +12,6 @@ for (let i = 0; i < 50; i++) {
 // preload 함수: 이미지를 로드하는 함수
 function preload() {
     img = loadImage('./sia400.png'); // 'sia400.png' 이미지 파일 로드
-
 }
 
 function setup() {
@@ -23,7 +22,6 @@ function setup() {
     // 이미지를 8x8 픽셀 블록으로 나누어 각 블록의 평균 알파값을 구함
     for (let height = 0; height < 400; height += 8) { // 이미지 높이를 8 픽셀 단위로 반복
         for (let width = 0; width < 400; width += 8) { // 이미지 너비를 8 픽셀 단위로 반복
-
             pixels = 0; // 픽셀값 초기화
             let i, j;
             for (j = 0; j < 8; j++) { // 블록 내 행 반복
@@ -32,25 +30,27 @@ function setup() {
                 }
             }
             arr[width / 8][height / 8] = pixels / 64; // 각 블록의 알파값의 평균을 계산하여 배열에 저장
-
-        }
-    }
-    textSize(11)
-
-    for (let j =0; j < 50; j ++){
-        for (let i = 0; i < 50; i ++){
-
-            if (arr[j][i]>0) {
-                text("@", 400 + i * 16, j * 16, 12, 12);
-            }
-            else {
-                text(".", 400 + i * 16, j * 16, 12, 12);
-            }
         }
     }
 
+    textSize(11);
+
+    // 배열을 순회하며 해당 위치의 알파값에 따라 '@' 또는 '.'을 표시
+    for (let j = 0; j < 50; j++) {
+        for (let i = 0; i < 50; i++) {
+            if (arr[j][i] > 0) {
+                text("@", 400 + i * 16, j * 16, 12, 12); // '@'를 표시
+            } else {
+                text(".", 400 + i * 16, j * 16, 12, 12); // '.'을 표시
+            }
+        }
+    }
 }
 
 function draw() {
-
+    // 이미지의 경계를 표시하기 위한 선 그리기
+    line(1, 1, 1, 399); // 왼쪽 선
+    line(1, 399, 399, 399); // 아래쪽 선
+    line(399, 399, 399, 1); // 오른쪽 선
+    line(1, 399, 1, 1); // 위쪽 선
 }
