@@ -1,8 +1,8 @@
 const obj = {};
-obj.color = "yellow";
 
-// obj["not an identifier"] = 3;
-// obj["not an identifier"];
+
+obj["not an identifier"] = 3;
+obj["not an identifier"];
 obj["color"];
 
 console.log(obj);
