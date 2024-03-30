@@ -11,7 +11,7 @@ for (let i = 0; i < 50; i++) {
 
 // preload 함수: 이미지를 로드하는 함수
 function preload() {
-    img = loadImage('./sia400.png'); // 'sia400.png' 이미지 파일 로드
+    img = loadImage('./ahj.png'); // 'sia400.png' 이미지 파일 로드
 }
 
 function setup() {
