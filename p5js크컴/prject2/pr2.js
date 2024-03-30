@@ -1,39 +1,42 @@
-let x, y;
-x = 0;
-y = 0;
-
-let w = 5;
-let p = 0.5;
+let x1 = 400;
+let y1 = 400;
+let sequence = [];
 
 function setup() {
-    createCanvas(400, 400);
-    background(255);
+    createCanvas(800, 800);
+    strokeWeight(4);
+    stroke(0);
+
+    for (let i = 1; i <= 50; i++) {
+        let num = (-1) ** (i + 1) * i;
+        sequence.push(num);
+    }
 }
+
 function draw() {
+    background(255);
 
-    let r = random(128, 255)
-    let g = random(128, 255)
-    let b = random(128, 255)
-    stroke(r, g, b);
+    let startX = x1;
+    let startY = y1;
+    let secondX = x1;
+    let secondY = y1;
+    let endX = x1;
+    let endY = y1;
 
+    for (let r = 1; r <= 50; r += 4) {
+        secondX += sequence[r];
+        secondY += sequence[r];
+        endX += sequence[r+1];
+        endY += sequence[r+1]
+        line(startX, startY, secondX, startY);
+        line(secondX, startY, secondX, secondY);
+        line(secondX, secondY, endX, secondY);
+        line(endX, secondY, endX, endY);
 
-    if (random() > p) {
-        line(x, y, x+w, y+w);
-
-    } else {
-        line(x, y+w, x+w, y);
-    }
-
-    x = x + w;
-
-    if (x > width) {
-        y = y + w;
-        x = 0;
-    }
-
-    if (y > height) {
-        background(0);
-        x = 0;
-        y = 0;
+        startX = endX;
+        startY = endY;
     }
 }
+
+
+
