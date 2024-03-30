@@ -10,7 +10,7 @@ for (let i = 0; i < 50; i++) {
 }
 
 function preload() {
-    img = loadImage('./ahj.png'); // 이미지 로드
+    img = loadImage('./sia400.png'); // 이미지 로드
 }
 
 function setup() {
