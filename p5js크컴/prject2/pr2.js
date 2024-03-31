@@ -1,45 +1,39 @@
-<<<<<<< HEAD
-=======
-let x1 = 400;
-let y1 = 400;
-let sequence = [];
+let x1 = [];
+let y1 = [];
+let x2 = [];
+let y2 = [];
+let cN = 1;
 
 function setup() {
-    createCanvas(800, 800);
-    strokeWeight(4);
-    stroke(0);
+    createCanvas(400, 400);
+    gS(); // 시퀀스 생성
+    pS(); // 시퀀스 출력
+}
 
-    for (let i = 1; i <= 50; i++) {
-        let num = (-1) ** (i + 1) * i;
-        sequence.push(num);
+function gS() {
+    for (let i = 1; i <= 30; i++) { // 10개의 시퀀스 생성
+
+        x1.push(cN, cN, -cN, -cN); // 현재 숫자와 그 반대의 부호를 두 번씩 추가
+
+        y1.push(cN, cN, -cN, -cN); // 현재 숫자와 그 반대의 부호를 두 번씩 추가
+
+        x2.push(cN, cN, -cN, -cN); // 현재 숫자와 그 반대의 부호를 두 번씩 추가
+
+        y2.push(cN, cN, -cN, -cN); // 현재 숫자와 그 반대의 부호를 두 번씩 추가
+        cN++; // 다음 숫자로 이동
     }
 }
 
-function draw() {
-    background(255);
+function pS() {
+    for (let i = 0; i < y1.length-2; i++) {
 
-    let startX = x1;
-    let startY = y1;
-    let secondX = x1;
-    let secondY = y1;
-    let endX = x1;
-    let endY = y1;
+        let lx1 = x1[i+1];
+        let ly1 = y1[i+2];
+        let lx2 = x2[i];
+        let ly2 = y2[i+1];
 
-    for (let r = 1; r <= 50; r += 4) {
-        secondX += sequence[r];
-        secondY += sequence[r];
-        endX += sequence[r+1];
-        endY += sequence[r+1]
-        line(startX, startY, secondX, startY);
-        line(secondX, startY, secondX, secondY);
-        line(secondX, secondY, endX, secondY);
-        line(endX, secondY, endX, endY);
+        line(lx1*5+200, ly1*5+200, lx2*5+200, ly2*5+200);
 
-        startX = endX;
-        startY = endY;
+        console.log(y2[i]); // 시퀀스를 콘솔에 출력
     }
 }
-
-
-
->>>>>>> 1d226a36e87b98b5fc0050a863f0ee300443067e
