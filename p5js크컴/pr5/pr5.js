@@ -18,8 +18,8 @@ function setup() {
 function draw() {
     randomSeed(actRandomSeed);
     background(255);
-    rotateX(frameCount * 0.005);
-    rotateY(frameCount * 0.005);
+    rotateZ(frameCount * 0.01);
+    rotateY(frameCount * 0.01);
 
     for (let box of boxes) {
         box.display();
