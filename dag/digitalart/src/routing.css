@@ -1,0 +1,10 @@
+@keyframes moveText {
+    0% { transform: translate(5px, 5px); }
+    50% { transform: translate(5px, 5px); } /* 좌우로 5px 이동하는 애니메이션 */
+    100% { transform: translate(5px, 5px); }
+}
+
+.running {
+    animation: moveText 0.5s linear infinite;
+    cursor: pointer;
+}

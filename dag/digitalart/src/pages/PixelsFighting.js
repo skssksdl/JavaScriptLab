@@ -145,13 +145,15 @@ function PixelsFighting() {
 
     return (
         <center>
-            <br />
-            <div style={{ width: "100%" }}>
-                <span style={{ fontFamily: "Arial Black, Gadget, sans-serif", fontSize: "1.5em", color: "black" }}>PIXELS FIGHTING</span>
+            <br/>
+            <div style={{width: "100%"}}>
+                <span style={{fontFamily: "Arial Black, Gadget, sans-serif", fontSize: "1.5em", color: "black"}}>PIXELS FIGHTING</span>
             </div>
-            <br /><br />
+            <br/><br/>
+
             <canvas ref={canvasRef} id="scrawl" width={width} height={height}></canvas>
-            <br /><br /><br />
+            <div>이것은 정말 멋진 작품입니다.</div>
+            <br/><br/><br/>
         </center>
     );
 }

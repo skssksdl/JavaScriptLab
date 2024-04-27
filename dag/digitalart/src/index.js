@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 //nav bar
-import Navigation from "./navigation.js";
 import Routing from "./routing.js";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <Navigation/>
         <Routing/>
     </React.StrictMode>
 );

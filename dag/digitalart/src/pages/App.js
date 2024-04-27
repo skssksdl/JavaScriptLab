@@ -1,13 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import React from 'react';
+import React, {useState} from 'react';
+
+
+
 
 function App() {
+
+    const[url, setUrl] = useState("app")
+
   return (
-      <div className="App">
-          <h>환영합니다. 교수님</h>
+      <div>
           <div>
-          <input type="text"></input><button>로그인</button>
+              <span>정찬하의 과제 세상에 오신 것을 환영합니다.</span>
+
           </div>
 
       </div>
