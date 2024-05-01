@@ -1,10 +1,15 @@
+<!-- PIXELS FIGHTING by Jan Tewes Thede | @jtthede -->
 
-<!--PIXELS FIGHTING by Jan Tewes Thede | @jtthede -->
+<!-- HTML 문서 시작 -->
 <html>
+
+<!-- 문서 제목 설정 -->
 <title>PIXELS FIGHTING</title>
 
+<!-- Head 섹션 시작 -->
 <head>
 
+    <!-- Google Analytics 스크립트 -->
     <script type="text/javascript">
 
         var _gaq = _gaq || [];
@@ -19,39 +24,52 @@
 
     </script>
 
+    <!-- CSS 스타일 설정 -->
     <style>
         footer {
             position: absolute;
             bottom: 10;
         }
     </style>
+
+    <!-- JavaScript 스크립트 설정 -->
     <script type="application/javascript">
 
+        // 변수 초기화
         var canvas, ctx;
         var interval;
         var width, height;
         var size,step;
         var Sum_1;
+        // 무작위 색상 설정
         color1 = Math.floor(Math.random()*16777215).toString(16)
         color1 = "#"+("000000" + color1).slice(-6)
         color2 = Math.floor(Math.random()*16777215).toString(16)
         color2 = "#"+("000000" + color2).slice(-6)
+
+        // 초기 설정 함수
         function setup() {
+            // 캔버스 크기 설정
             width = 500;
             height = 500;
+            // 캔버스 요소 및 컨텍스트 설정
             canvas = document.getElementById("scrawl");
             ctx = canvas.getContext("2d");
+            // 픽셀 크기 설정
             size=125;
             step=500/size;
             Sum_1=0;
+            // 초기화 함수 호출
             initialize();
+            // 일정 시간마다 run 함수 호출
             interval = setInterval(run,2);
         }
-        // Intiiales Setzen der Boards
+
+        // 보드 초기화 함수
         function initialize() {
             Old = new Array (size);
             New = new Array (size);
-            //Anzahl der Nachbarn
+            // 이웃 수 설정 배열 초기화
             Neigh = new Array (size);
             Ratio1 = new Array (size);
             for (i = 0; i < Old . length; ++ i){
@@ -64,6 +82,7 @@
                 for (j = 0; j < size; ++ j){
                     Ratio1 [i][j]=0;
                     Neigh[i][j]=8;
+                    // 가장자리의 이웃 수 설정
                     if (i===0 || i===size-1) {
                         Neigh[i][j]=5;
                         if(j===0 || j===size-1) {
@@ -76,6 +95,7 @@
                             Neigh[i][j]=3
                         }
                     }
+                    // 초기 상태 설정
                     if (i<size/2){
                         Old [i][j] = 1;
                         Sum_1+=1
@@ -88,6 +108,8 @@
             }
             Sum_1=Sum_1/(size*size);
         }
+
+        // 비율 계산 함수
         function ratio() {
             for (i = 0; i < size; ++ i){
                 for (j = 0; j < size; ++ j){
@@ -111,7 +133,11 @@
             console.log(Ratio1[1][1]);
             console.log(Sum_1);
         }
+
+        // 그리기 함수
         function draw() {
+
+
             for (i = 0; i < size; ++ i){
                 for (j = 0; j < size; ++ j){
                     ctx.fillStyle = color1;
@@ -120,12 +146,12 @@
                 }
             }
         }
-        function calculate() {
 
+        // 계산 함수
+        function calculate() {
             for (i = 0; i < size; ++ i){
                 for (j = 0; j < size; ++ j){
                     help=Math.random();
-
                     if ((Ratio1[i][j])>help){
                         Old[i][j]=1;
                     } else{Old[i][j]=0;
@@ -140,6 +166,8 @@
             }
             Sum_1=Sum_1/(size*size);
         }
+
+        // 실행 함수
         function run() {
             ratio();
             draw();
@@ -149,20 +177,25 @@
     </script>
 </head>
 
+<!-- Body 섹션 시작 -->
 <body onload="setup()">
 
+<!-- 중앙 정렬을 위한 Center 태그 -->
 <center>
     <br>
+    <!-- 페이지 제목 표시 -->
     <div style="width: 100%"><span style="font-family:Arial Black, Gadget, sans-serif ;font-size: 1.5em; color:black;">PIXELS FIGHTING
     </div>
     <br>
     <br>
 
+    <!-- 캔버스 요소 -->
     <canvas id="scrawl" width="500" height="500"></canvas>
     <br> <br>  <br>
 
-
 </center>
-</body>
+<!-- Body 섹션 종료 -->
 
+</body>
+<!-- HTML 문서 종료 -->
 </html>
