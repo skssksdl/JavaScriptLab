@@ -32,8 +32,8 @@ function draw() {
     background("black");
     scale(s);
 
-    drawingContext.shadowBlur =50;
-    drawingContext.shadowColor =color("red");
+    drawingContext.shadowBlur = 50;
+    drawingContext.shadowColor = color("red");
     tint("black")
 
     let point = {mouseX, mouseY};
@@ -45,48 +45,18 @@ function draw() {
 
 
     // 이미지 그리기
-        for (let i = 0; i < totalLayers; i++) {
-
-                if (i == 0) {
-                    // 마우스를 따라다님
-                    x = x + ((mouseX - x) * easing);
-                    y = y + ((mouseY - y) * easing);
-
-                    xA[0] = x;
-                    yA[0] = y;
-                    //
-                    // xA[0] = 0;
-                    // yA[0] = 0;
-
-                }
-                else {
-                    dy = yA[i - 1] - yA[i];
-                    yA[i] = yA[i] + (dy * easing * 12);
-                    dx = xA[i - 1] - xA[i];
-                    xA[i] = xA[i] + (dx * easing * 12);
-                }
-            }
-
-    // 이미지 그리기
-
-        for (let i = totalLayers - 1; i > -1; i--) {
-            push();
-            translate(xA[i], yA[i]);
-            image(img[i], -500, -500);
-
-            drawingContext.shadowBlur =32;
-            drawingContext.shadowColor =color(207, 7, 99);
-
-
     for (let i = 0; i < totalLayers; i++) {
+
         if (i == 0) {
+            // 마우스를 따라다님
             x = x + ((mouseX - x) * easing);
             y = y + ((mouseY - y) * easing);
+
             xA[0] = x;
             yA[0] = y;
 
-        }
-        else {
+
+        } else {
             dy = yA[i - 1] - yA[i];
             yA[i] = yA[i] + (dy * easing * 12);
             dx = xA[i - 1] - xA[i];
@@ -94,15 +64,39 @@ function draw() {
         }
     }
 
+    // 이미지 그리기
+
     for (let i = totalLayers - 1; i > -1; i--) {
         push();
         translate(xA[i], yA[i]);
         image(img[i], -500, -500);
-        pop();
+
+        drawingContext.shadowBlur = 32;
+        drawingContext.shadowColor = color(207, 7, 99);
+
+
+        for (let i = 0; i < totalLayers; i++) {
+            if (i == 0) {
+                x = x + ((mouseX - x) * easing);
+                y = y + ((mouseY - y) * easing);
+                xA[0] = x;
+                yA[0] = y;
+
+            } else {
+                dy = yA[i - 1] - yA[i];
+                yA[i] = yA[i] + (dy * easing * 12);
+                dx = xA[i - 1] - xA[i];
+                xA[i] = xA[i] + (dx * easing * 12);
+            }
+        }
+
+        for (let i = totalLayers - 1; i > -1; i--) {
+            push();
+            translate(xA[i], yA[i]);
+            image(img[i], -500, -500);
+            pop();
+        }
     }
-
-
-
 }
 
 function windowResized() {
