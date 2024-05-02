@@ -1,42 +1,10 @@
-const obj = {};
+let arr = [[1, 2], [3, 4], [5,6]];
+
+console.log(arr.length)
 
 
-obj["not an identifier"] = 3;
-obj["not an identifier"];
-obj["color"];
+for (i = 0; i > -1; i--) {
 
-console.log(obj);
+    console.log(i, arr.length, arr[i].length)
 
-
-
-
-
-
-
-
-
-
-
-// const sam1 = {
-//     name: 'Sam',
-//     age: 4,
-// };
-//
-// const sam2 = {name: 'Sam', age: 4};
-//
-// const  sam3 = {
-//     name: 'Sam',
-//     classification: {
-//         kingdom : 'Anamalia',
-//         phylum: 'Chordata',
-//         class: 'Mamalia',
-//         order: 'Carnivoria',
-//         family: 'Felidae',
-//         subfamily: 'Felinae',
-//         genus: 'Felis',
-//         species: 'catus'
-//     },
-// };
-//
-//
-// console.log(sam2.age);
+}
