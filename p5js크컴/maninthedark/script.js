@@ -60,8 +60,11 @@ function draw() {
     }
 
     // 이미지 그리기
-    for (var z = img.length - 1; z > -1; z--) {
-        for (var i = 0; i < img[z].length; i++) {
+    for (let z = img.length - 1; z > -1; z--) {
+        for (let i = 0; i < img[z].length; i++) {
+
+            console.log(img.length);
+            // console.log(img[z].length, img.length);
 
             if (i == 1 && z > 0) {
                 yA[z][0] = yA[z - 1][img[z].length - 1];
@@ -116,25 +119,25 @@ function draw() {
 
 }
 
-
-function mouseClicked() {
-    for (i = 0; i < 49; i++) {
-        img[i]
-        tint(25.125)
-        sleep(0.1)
-
-        console.log(i)
-    }
-
-}
-
-
-function sleep(sec) {
-    let start = Date.now(), now = start;
-    while (now - start < sec * 1000) {
-        now = Date.now();
-    }
-}
+//
+// function mouseClicked() {
+//     for (i = 0; i < 49; i++) {
+//         img[i]
+//         tint(25.125)
+//         sleep(0.1)
+//
+//         console.log(i)
+//     }
+//
+// }
+//
+//
+// function sleep(sec) {
+//     let start = Date.now(), now = start;
+//     while (now - start < sec * 1000) {
+//         now = Date.now();
+//     }
+// }
 
 
 // 창 크기 변경 시 호출되는 함수

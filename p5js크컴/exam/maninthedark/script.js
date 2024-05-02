@@ -5,8 +5,6 @@ let points = []; // 마우스 이동 경로를 저장하는 배열
 let easing = 0.05; // 이징(easing) 값으로, 애니메이션의 부드러운 이동을 제어
 let clicked = 0; // 클릭 횟수
 
-
-
 // 초기 좌표 값
 var x = 0.0;
 var y = 0.0;
@@ -158,6 +156,10 @@ function draw() {
     // 이미지 그리기
     for (var z = img.length - 1; z > -1; z--) {
         for (var i = 0; i < img[z].length; i++) {
+
+            console.log(img[z].length)
+            console.log(img.length)
+
             if (i == 0 && z > 0) {
                 yA[z][0] = yA[z - 1][img[z].length - 1];
                 xA[z][0] = xA[z - 1][img[z].length - 1];
