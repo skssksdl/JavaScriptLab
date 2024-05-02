@@ -21,7 +21,6 @@ function preload() {
 }
 
 function setup() {
-
     createCanvas(windowWidth, windowHeight);
     frameRate(60);
     textSize(30);
@@ -43,10 +42,7 @@ function draw() {
         points.splice(0, 1);
     }
 
-
-    // 이미지 그리기
     for (let i = 0; i < totalLayers; i++) {
-
         if (i == 0) {
             // 마우스를 따라다님
             x = x + ((mouseX - x) * easing);
@@ -54,48 +50,21 @@ function draw() {
 
             xA[0] = x;
             yA[0] = y;
-
-
         } else {
-            dy = yA[i - 1] - yA[i];
-            yA[i] = yA[i] + (dy * easing * 12);
             dx = xA[i - 1] - xA[i];
             xA[i] = xA[i] + (dx * easing * 12);
+
+            dy = yA[i - 1] - yA[i];
+            yA[i] = yA[i] + (dy * easing * 12);
         }
     }
-
-    // 이미지 그리기
 
     for (let i = totalLayers - 1; i > -1; i--) {
         push();
         translate(xA[i], yA[i]);
         image(img[i], -500, -500);
+        pop()
 
-        drawingContext.shadowBlur = 32;
-        drawingContext.shadowColor = color(207, 7, 99);
-
-
-        for (let i = 0; i < totalLayers; i++) {
-            if (i == 0) {
-                x = x + ((mouseX - x) * easing);
-                y = y + ((mouseY - y) * easing);
-                xA[0] = x;
-                yA[0] = y;
-
-            } else {
-                dy = yA[i - 1] - yA[i];
-                yA[i] = yA[i] + (dy * easing * 12);
-                dx = xA[i - 1] - xA[i];
-                xA[i] = xA[i] + (dx * easing * 12);
-            }
-        }
-
-        for (let i = totalLayers - 1; i > -1; i--) {
-            push();
-            translate(xA[i], yA[i]);
-            image(img[i], -500, -500);
-            pop();
-        }
     }
 }
 
