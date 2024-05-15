@@ -11,6 +11,10 @@ let yA = [];
 
 let s = 1;
 
+let btSearch;
+let mx = 0
+let my = 0
+
 function preload() {
     for (let i = totalLayers - 1; i > -1; i--) {
         let index = i + 1;
@@ -22,20 +26,29 @@ function preload() {
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    frameRate(60);
+    frameRate(30);
     textSize(30);
     textAlign(CENTER);
+
+    btSearch = createButton("Search Microbit");
+    btSearch.position(10, height+10);
+    btSearch.mousePressed(searchDevice);
 }
 
 function draw() {
-    background("black");
+    background("white");
     scale(s);
 
-    drawingContext.shadowBlur = 50;
-    drawingContext.shadowColor = color("red");
-    tint("black")
+    mx = mbit.x;
+    my = mbit.y;
 
-    let point = {mouseX, mouseY};
+    console.log(mx, my)
+
+    drawingContext.shadowBlur = 50;
+    drawingContext.shadowColor = color("black");
+    tint("white")
+
+    let point = {mx, my};
     points.push(point);
 
     if (points.length > totalLayers) {
@@ -45,8 +58,8 @@ function draw() {
     for (let i = 0; i < totalLayers; i++) {
         if (i == 0) {
             // 마우스를 따라다님
-            x = x + ((mouseX - x) * easing);
-            y = y + ((mouseY - y) * easing);
+            x = x + ((mx - x) * easing);
+            y = y + ((my - y) * easing);
 
             xA[0] = x;
             yA[0] = y;
@@ -66,6 +79,8 @@ function draw() {
         pop()
 
     }
+
+
 }
 
 function windowResized() {
